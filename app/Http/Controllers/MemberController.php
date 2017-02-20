@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Member;
+use App\Http\Requests\CreateMemberRequest;
 
 class MemberController extends Controller
 {
@@ -13,7 +15,9 @@ class MemberController extends Controller
      */
     public function index()
     {
-        //
+        $members = Member::paginate(5);
+
+        return view('member.index', ['members' => $members]);
     }
 
     /**
@@ -23,7 +27,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        return view('member.create');
     }
 
     /**
@@ -32,9 +36,19 @@ class MemberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateMemberRequest $request)
     {
-        //
+        $member = new Member();
+
+        $member->first_name = $request->input('first_name');
+        $member->last_name = $request->input('last_name');
+        $member->email = $request->input('email');
+
+        $member->save();
+
+        return redirect('member')
+            ->with('status', 'success')
+            ->with('message', 'The member has been created!');
     }
 
     /**
@@ -56,7 +70,9 @@ class MemberController extends Controller
      */
     public function edit($id)
     {
-        //
+        $member = Member::find($id);
+
+        return view('member.edit', ['member' => $member]);
     }
 
     /**
@@ -66,9 +82,20 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateMemberRequest $request, $id)
     {
-        //
+        $member = Member::find($id);    
+
+        $member->first_name = $request->input('first_name');
+        $member->last_name = $request->input('last_name');
+        $member->email = $request->input('email');
+
+        $member->save();
+
+        return redirect('member')
+            ->with('status', 'success')
+            ->with('message', 'The member has been updated!');
+
     }
 
     /**
@@ -79,6 +106,13 @@ class MemberController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $member = Member::find($id);
+
+        $member->delete();
+
+        return redirect('member')
+            ->with('status', 'success')
+            ->with('message', 'The member has been deleted!');
+
     }
 }
