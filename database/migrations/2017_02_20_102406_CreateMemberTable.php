@@ -15,9 +15,11 @@ class CreateMemberTable extends Migration
     {
         Schema::create('member', function (Blueprint $table) {
             $table->increments('id');
-            $table->first_name('first_name', 45);
-            $table->last_name('last_name', 45);
-            $table->email('email', 65);
+            $table->string('first_name', 45);
+            $table->string('last_name', 45);
+            $table->string('email', 65);
+            $table->integer('school_id')->nullable()->unsigned();
+            $table->foreign('school_id')->references('id')->on('school');
             $table->timestamps();
         });
     }
