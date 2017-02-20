@@ -18,6 +18,7 @@ class CreateMemberTable extends Migration
             $table->first_name('first_name', 45);
             $table->last_name('last_name', 45);
             $table->email('email', 65);
+            $table->timestamps();
         });
     }
 
