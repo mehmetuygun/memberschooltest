@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Member;
 use App\Http\Requests\CreateMemberRequest;
+use App\School;
 
 class MemberController extends Controller
 {
@@ -27,7 +28,9 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('member.create');
+        $schools = School::all();
+
+        return view('member.create', ['schools' => $schools]);
     }
 
     /**
@@ -43,6 +46,7 @@ class MemberController extends Controller
         $member->first_name = $request->input('first_name');
         $member->last_name = $request->input('last_name');
         $member->email = $request->input('email');
+        $member->school_id = $request->input('school');
 
         $member->save();
 
@@ -72,7 +76,9 @@ class MemberController extends Controller
     {
         $member = Member::find($id);
 
-        return view('member.edit', ['member' => $member]);
+        $schools = School::all();
+
+        return view('member.edit', ['member' => $member, 'schools' => $schools]);
     }
 
     /**
@@ -89,6 +95,7 @@ class MemberController extends Controller
         $member->first_name = $request->input('first_name');
         $member->last_name = $request->input('last_name');
         $member->email = $request->input('email');
+        $member->school_id = $request->input('school');
 
         $member->save();
 

@@ -18,8 +18,7 @@ class CreateMemberTable extends Migration
             $table->string('first_name', 45);
             $table->string('last_name', 45);
             $table->string('email', 65);
-            $table->integer('school_id')->nullable()->unsigned();
-            $table->foreign('school_id')->references('id')->on('school');
+            $table->integer('school_id')->nullable();
             $table->timestamps();
         });
     }

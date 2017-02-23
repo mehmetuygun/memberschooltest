@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::resource('/member', 'MemberController');
+
+Route::resource('/school', 'SchoolController');

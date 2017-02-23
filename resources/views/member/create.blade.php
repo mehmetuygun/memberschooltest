@@ -59,6 +59,28 @@
                 </div>
             </div>
 
+            <div class="form-group{{ $errors->has('school') ? ' has-error' : '' }}">
+                <label for="school" class="col-md-4 control-label">School</label>
+
+                <div class="col-md-6">
+                    <select id="school" type="school" class="form-control" name="school">
+                        @foreach ($schools as $school)
+                            @if (old('school') && old('school') == $school->id)
+                                <option selected="selected" value="{{ $school->id }}">{{ $school->name }}</option>
+                            @else
+                                <option value="{{ $school->id }}">{{ $school->name }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+
+                    @if ($errors->has('school'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('school') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-4">
                     <button type="submit" class="btn btn-primary">
