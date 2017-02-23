@@ -8,6 +8,10 @@
   ```
   git clone https://github.com/mehmetuygun/memberschooltest
   ```
+  Run the following command to install vendors and set autoload if you have no composer installed your computer, please check https://getcomposer.org to see how to install.
+  ```
+  composer update
+  ```
   Open the .env.example file to configure database. Do not forget to after changed you should save as this file as .env 
   
   ```php
