@@ -36,6 +36,14 @@
             </thead>
             <tbody>
 
+                @if ($members->isEmpty())
+                    <tr>  
+                        <td colspan="7" style="text-align: center;font-weight: bold">
+                            {{ __('forum.no_data') }}
+                        </td> 
+                    </tr>
+                @endif
+
                 @foreach ($members as $member)
 
                     <tr>

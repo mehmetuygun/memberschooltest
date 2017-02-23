@@ -33,6 +33,14 @@
             </thead>
             <tbody>
 
+                @if ($schools->isEmpty())
+                    <tr>  
+                        <td colspan="4" style="text-align: center;font-weight: bold">
+                            {{ __('forum.no_data') }}
+                        </td> 
+                    </tr>
+                @endif
+
                 @foreach ($schools as $school)
 
                     <tr>

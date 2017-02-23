@@ -21,6 +21,6 @@ return [
     'email_address' => 'Email Address',
     'update' => 'Update',
     'email' => 'Email',  
-    'action' => 'Action'
-
+    'action' => 'Action',
+    'no_data' => 'There is no data to display'
 ];
