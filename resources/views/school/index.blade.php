@@ -3,8 +3,8 @@
 @section('content')
 
 <ol class="breadcrumb">
-    <li><a href="{{ url('') }}">Home</a></li>
-    <li class="active">School</li>
+    <li><a href="{{ url('') }}">{{ __('forum.home') }}</a></li>
+    <li class="active">{{ __('forum.school') }}</li>
 </ol>
 
 @if (session('status'))
@@ -16,19 +16,19 @@
 
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> School</h3>
+        <h3 class="panel-title"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> {{ __('forum.school') }}</h3>
     </div>
     <div class="panel-body">
         
-        <a href="{{ url('school/create') }}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create School</a>
+        <a href="{{ url('school/create') }}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{ __('forum.create_school') }}</a>
 
         <table class="table">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>School Name</th>
-                    <th>Created at</th>
-                    <th>Action</th>
+                    <th>{{ __('forum.school') }}</th>
+                    <th>{{ __('forum.created_at') }}</th>
+                    <th>{{ __('forum.action') }}</th>
                 </tr>
             </thead>
             <tbody>

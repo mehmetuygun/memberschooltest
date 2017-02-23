@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <title>MemberSchoolTest</title>
+        <title>{{ __('app.name') }}</title>
 
         
         <link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -25,14 +25,14 @@
             <div class="page-header">
 
                 <h1>
-                MemberSchoolTest 
+                {{ __('app.name') }} 
                     <div class="pull-right">
                         <a href="{{ url('member') }}" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Member
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ __('forum.member') }}
                         </a>
 
                         <a href="{{ url('school') }}" class="btn btn-primary">
-                            <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> School
+                            <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> {{ __('forum.school') }}
                         </a>
                     </div>
                 </h1>

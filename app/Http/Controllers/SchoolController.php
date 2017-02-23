@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\School;
 use App\Http\Requests\CreateSchoolRequest;
+use Lang;
 
 
 class SchoolController extends Controller
@@ -50,7 +51,7 @@ class SchoolController extends Controller
 
         return redirect('school')
             ->with('status', 'success')
-            ->with('message', 'The member has been created!');
+            ->with('message', Lang::get('message.school_created_success'));
     }
 
     /**
@@ -94,7 +95,7 @@ class SchoolController extends Controller
 
         return redirect('school')
             ->with('status', 'success')
-            ->with('message', 'The member has been updated!');
+            ->with('message', Lang::get('message.school_updated_success'));
     }
 
     /**
@@ -111,6 +112,6 @@ class SchoolController extends Controller
 
         return redirect('school')
             ->with('status', 'success')
-            ->with('message', 'The member has been deleted!');
+            ->with('message', Lang::get('message.school_removed_success'));
     }
 }

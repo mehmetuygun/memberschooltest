@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Member;
 use App\Http\Requests\CreateMemberRequest;
 use App\School;
+use Lang;
 
 class MemberController extends Controller
 {
@@ -52,7 +53,7 @@ class MemberController extends Controller
 
         return redirect('member')
             ->with('status', 'success')
-            ->with('message', 'The member has been created!');
+            ->with('message', Lang::get('message.member_created_success'));
     }
 
     /**
@@ -101,7 +102,7 @@ class MemberController extends Controller
 
         return redirect('member')
             ->with('status', 'success')
-            ->with('message', 'The member has been updated!');
+            ->with('message', Lang::get('message.member_updated_success'));
 
     }
 
@@ -119,7 +120,7 @@ class MemberController extends Controller
 
         return redirect('member')
             ->with('status', 'success')
-            ->with('message', 'The member has been deleted!');
+            ->with('message', Lang::get('message.member_removed_success'));
 
     }
 }
