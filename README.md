@@ -8,11 +8,11 @@
   ```
   git clone https://github.com/mehmetuygun/memberschooltest
   ```
-  Run the following command to generate unique key for app
+  Run the following command to generate unique key for app. You should run this commands under memberschool/ . Go to this     directory in command line before running commands.
   ```
   php artisan key:generate
   ```
-  Open the .env.example file to configure database
+  Open the .env.example file to configure database. Do not forget to after changed you should save as this file as .env 
   
   ```php
   APP_ENV=local
@@ -56,4 +56,4 @@
   ```
   php artisan migrate
   ```
-  
+  The app is all set. You can reach it in your browser. 
