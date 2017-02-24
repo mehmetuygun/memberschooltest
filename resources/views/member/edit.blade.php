@@ -61,24 +61,20 @@
             </div>
 
             <div class="form-group{{ $errors->has('school') ? ' has-error' : '' }}">
-                <label for="school" class="col-md-4 control-label">{{ __('forum.school') }}</label>
+                <label class="col-md-4 control-label">{{ __('forum.school') }}</label>
 
                 <div class="col-md-6">
-                    <select id="school" type="school" class="form-control" name="school">
-                        @foreach ($schools as $school)
-                            @if (old('school') && old('school') == $school->id)
-                                <option selected="selected" value="{{ $school->id }}">{{ $school->name }}</option>
-                            @elseif (!is_null($member->school))
-                                @if ($school->id == $member->school->id)
-                                    <option selected="selected" value="{{ $school->id }}">{{ $school->name }}</option>
-                                @else
-                                    <option value="{{ $school->id }}">{{ $school->name }}</option>
-                                @endif
-                            @else
-                                <option value="{{ $school->id }}">{{ $school->name }}</option>
-                            @endif
-                        @endforeach
-                    </select>
+                    @foreach ($schools as $school)
+                        @if (old('school') and in_array($school->id, old('school')))
+                            <input type="checkbox" id="school" checked="checked" name="school[]" value="{{ $school->id }}">{{ $school->name }} </br>
+                        @elseif (old('school') and !in_array($school->id, old('school')))
+                            <input type="checkbox" id="school" name="school[]" value="{{ $school->id }}">{{ $school->name }} </br>                        
+                        @elseif (in_array($school->id, $member_school_id))
+                            <input type="checkbox" id="school" checked="checked" name="school[]" value="{{ $school->id }}">{{ $school->name }} </br>
+                        @else
+                            <input type="checkbox" id="school" name="school[]" value="{{ $school->id }}">{{ $school->name }} </br>                        
+                        @endif
+                    @endforeach
 
                     @if ($errors->has('school'))
                         <span class="help-block">

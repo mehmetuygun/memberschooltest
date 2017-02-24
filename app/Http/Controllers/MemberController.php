@@ -47,9 +47,9 @@ class MemberController extends Controller
         $member->first_name = $request->input('first_name');
         $member->last_name = $request->input('last_name');
         $member->email = $request->input('email');
-        $member->school_id = $request->input('school');
-
         $member->save();
+
+        $member->school()->attach($request->input('school'));
 
         return redirect('member')
             ->with('status', 'success')
@@ -79,7 +79,14 @@ class MemberController extends Controller
 
         $schools = School::all();
 
-        return view('member.edit', ['member' => $member, 'schools' => $schools]);
+        $member_school_id = array();
+
+        // make array list of school ids which member has
+        foreach ($member->school()->get() as $school) {
+            array_push($member_school_id, $school->id);
+        }
+
+        return view('member.edit', ['member' => $member, 'schools' => $schools, 'member_school_id' => $member_school_id]);
     }
 
     /**
@@ -96,9 +103,12 @@ class MemberController extends Controller
         $member->first_name = $request->input('first_name');
         $member->last_name = $request->input('last_name');
         $member->email = $request->input('email');
-        $member->school_id = $request->input('school');
-
         $member->save();
+
+        if ($request->input('school'))
+            $member->school()->sync($request->input('school'));
+        else
+            $member->school()->detach();
 
         return redirect('member')
             ->with('status', 'success')

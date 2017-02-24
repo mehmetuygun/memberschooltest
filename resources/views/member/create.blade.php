@@ -60,18 +60,18 @@
             </div>
 
             <div class="form-group{{ $errors->has('school') ? ' has-error' : '' }}">
-                <label for="school" class="col-md-4 control-label">{{ __('forum.school') }}</label>
-
+                <label class="col-md-4 control-label">{{ __('forum.school') }}</label>
                 <div class="col-md-6">
-                    <select id="school" type="school" class="form-control" name="school">
+                    {{-- <div class="checkbox"> --}}
+
                         @foreach ($schools as $school)
                             @if (old('school') && old('school') == $school->id)
-                                <option selected="selected" value="{{ $school->id }}">{{ $school->name }}</option>
+                                <input type="checkbox" id="school" checked="" ="checked="" " name="school[]" value="{{ $school->id }}">{{ $school->name }} </br>
                             @else
-                                <option value="{{ $school->id }}">{{ $school->name }}</option>
+                                <input type="checkbox" id="school" name="school[]" value="{{ $school->id }}">{{ $school->name }} </br>
                             @endif
                         @endforeach
-                    </select>
+                    {{-- </div> --}}
 
                     @if ($errors->has('school'))
                         <span class="help-block">

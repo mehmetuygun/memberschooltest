@@ -51,8 +51,12 @@
                         <td>{{ $member->first_name }}</td>
                         <td>{{ $member->last_name }}</td>
                         <td>{{ $member->email }}</td>
-                        @if (!is_null($member->school))
-                            <td>{{ $member->school->name }}</td>
+                        @if (!is_null($member->school()->get()))
+                            <td>
+                            @foreach ($member->school()->get() as $school)
+                                {{ $school->name }} - 
+                            @endforeach
+                            </td>
                         @else
                             <td></td>
                         @endif

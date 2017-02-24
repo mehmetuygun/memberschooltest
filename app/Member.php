@@ -16,10 +16,19 @@ class Member extends Model
 	/**
 	 * Get the school of the member
 	 *
-	 * @return     <<object>
+	 * @return     <object>
 	 */
     public function school()
     {
-    	return $this->belongsTo('App\School');
+    	return $this->belongsToMany('App\School');
+    }
+
+    /**
+     * Get the id or ids of the school(s) the member has
+     * @return [type] [description]
+     */
+    public function schoolId()
+    {
+        return $this->belongsToMany('App\School')->select('school_id');
     }
 }
